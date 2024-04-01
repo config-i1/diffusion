@@ -1,3 +1,9 @@
+#### v.0.4.1 (01/04/2024) ####
+
+changes
+- bass() function implementing Bass Model, together with plot(), print(), nobs(), logLik() and actuals() methods.
+- Seasonality in the Bass model. Currently the fixed one is supported.
+
 #### v.0.4.0 (01/04/2024) ####
 
 changes
