@@ -73,6 +73,7 @@
 #'
 #' # CMA of specific order
 #' ourModel <- bass(tsWindows[,6])
+#' forecast(ourModel, h=12) |> plot()
 #'
 #' @importFrom nloptr nloptr
 #' @importFrom statmod dinvgauss qinvgauss
@@ -378,14 +379,32 @@ coef.bass <- function(object, ...){
   return(object$B);
 }
 
+#' @param object The object of the class bass, estimated using the
+#' \code{bass()} function.
+#' @param h The forecast horizon.
+#' @param interval The type of interval to produce.
+#' @param level Confidence level to use in interval construction.
+#' Fractional number should be provided.
+#' @rdname bass
+#' @importFrom generics forecast
 #' @export
-predict.bass <- function(object, h=10, interval="prediction",
+forecast.bass <- function(object, h=10,
+                          interval=c("prediction","confidence","none"),
+                          level=0.95, ...){
+  return(predict(object, h=h, interval=interval, level=level, ...));
+}
+
+#' @export
+predict.bass <- function(object, h=10,
+                         interval=c("prediction","confidence","none"),
                          level=0.95, ...){
   # Calculate forecasts for fitted diffusion curves
   
   if (h <= 1){
     stop("Horizon h must be positive integer.")
   }
+  
+  interval <- match.arg(interval);
   
   obsAll <- nobs(object) + h;
   
@@ -499,5 +518,4 @@ plot.bass.forecast <- function(x, ...){
 # vcov.bass
 # confint.bass
 # summary.bass
-# predict.bass
-# forecast.bass
+# distribution="auto" in bass

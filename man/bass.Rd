@@ -2,6 +2,7 @@
 % Please edit documentation in R/bass-Model.R
 \name{bass}
 \alias{bass}
+\alias{forecast.bass}
 \title{Statistical Bass Model}
 \usage{
 bass(
@@ -10,6 +11,14 @@ bass(
   seasonality = FALSE,
   distribution = c("dlnorm", "dgamma", "dinvgauss"),
   formula = NULL,
+  ...
+)
+
+\method{forecast}{bass}(
+  object,
+  h = 10,
+  interval = c("prediction", "confidence", "none"),
+  level = 0.95,
   ...
 )
 }
@@ -54,6 +63,16 @@ You can read more about these parameters by running the function
 Starting values of parameters can be passed via \code{B}, while the upper and lower
 bounds should be passed in \code{ub} and \code{lb} respectively. In this case they
 will be used for optimisation.}
+
+\item{object}{The object of the class bass, estimated using the
+\code{bass()} function.}
+
+\item{h}{The forecast horizon.}
+
+\item{interval}{The type of interval to produce.}
+
+\item{level}{Confidence level to use in interval construction.
+Fractional number should be provided.}
 }
 \value{
 Object of class "bass" is returned. It contains the list of the
@@ -86,6 +105,7 @@ size variable m is stochastic and might change over time.
 
 # CMA of specific order
 ourModel <- bass(tsWindows[,6])
+forecast(ourModel, h=12)
 
 }
 \references{
