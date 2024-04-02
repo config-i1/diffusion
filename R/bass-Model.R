@@ -519,3 +519,5 @@ plot.bass.forecast <- function(x, ...){
 # confint.bass
 # summary.bass
 # distribution="auto" in bass
+# seasonality=NA to select automatically
+# seasonality update?
