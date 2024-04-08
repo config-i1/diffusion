@@ -379,6 +379,10 @@ coef.bass <- function(object, ...){
   return(object$B);
 }
 
+#' @importFrom generics forecast
+#' @export
+generics::forecast
+
 #' @param object The object of the class bass, estimated using the
 #' \code{bass()} function.
 #' @param h The forecast horizon.
@@ -386,7 +390,6 @@ coef.bass <- function(object, ...){
 #' @param level Confidence level to use in interval construction.
 #' Fractional number should be provided.
 #' @rdname bass
-#' @importFrom generics forecast
 #' @export
 forecast.bass <- function(object, h=10,
                           interval=c("prediction","confidence","none"),
@@ -394,6 +397,7 @@ forecast.bass <- function(object, h=10,
   return(predict(object, h=h, interval=interval, level=level, ...));
 }
 
+#' @importFrom stats predict
 #' @export
 predict.bass <- function(object, h=10,
                          interval=c("prediction","confidence","none"),
