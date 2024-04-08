@@ -105,7 +105,7 @@ size variable m is stochastic and might change over time.
 
 # CMA of specific order
 ourModel <- bass(tsWindows[,6])
-forecast(ourModel, h=12)
+forecast(ourModel, h=12) |> plot()
 
 }
 \references{
