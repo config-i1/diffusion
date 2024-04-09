@@ -6,6 +6,8 @@
 # diffusion
 The R package __diffusion__ is for forecasting with diffusion curves.
 
+![hex-sticker of the diffusion package for R](https://github.com/config-i1/diffusion/blob/master/man/figures/diffusion-web.png?raw=true)
+
 Currently the following diffusion models are implemented:
 
 1. Bass model
